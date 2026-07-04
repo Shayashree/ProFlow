@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCE ProFlow - Project & Academic Management Platform</title>
+  <!-- Google Fonts: Outfit (headings) & Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- SVG Icon Library Sprite -->
+  <svg style="display: none;">
+    <symbol id="icon-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="7" height="9" rx="1" />
+      <rect x="14" y="3" width="7" height="5" rx="1" />
+      <rect x="14" y="12" width="7" height="9" rx="1" />
+      <rect x="3" y="16" width="7" height="5" rx="1" />
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </symbol>
+    <symbol id="icon-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="8" x2="12" y2="12" />
+      <line x1="12" y1="16" x2="12.01" y2="16" />
+    </symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </symbol>
+    <symbol id="icon-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <polyline points="10 9 9 9 8 9" />
+    </symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
+    </symbol>
+    <symbol id="icon-timeline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <line x1="4" y1="9" x2="20" y2="9" />
+      <line x1="4" y1="15" x2="20" y2="15" />
+      <circle cx="8" cy="9" r="2" fill="currentColor" />
+      <circle cx="16" cy="15" r="2" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="20" x2="18" y2="10" />
+      <line x1="12" y1="20" x2="12" y2="4" />
+      <line x1="6" y1="20" x2="6" y2="14" />
+    </symbol>
+    <symbol id="icon-graduate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+      <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+    </symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+    </symbol>
+  </svg>
+
+  <!-- Main Container -->
+  <div class="app-layout">
+
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-orb"></div>
+        <div>
+          <h1><span>ProFlow</span></h1>
+        </div>
+      </div>
+
+      <!-- Role Switcher -->
+      <nav class="role-nav">
+        <button class="role-btn active" data-role="student">
+          <svg class="icon">
+            <use href="#icon-users" />
+          </svg>
+          Student Portal
+        </button>
+        <button class="role-btn" data-role="guide">
+          <svg class="icon">
+            <use href="#icon-graduate" />
+          </svg>
+          Guide Dashboard
+        </button>
+        <button class="role-btn" data-role="hod">
+          <svg class="icon">
+            <use href="#icon-dashboard" />
+          </svg>
+          HOD Analytics
+        </button>
+      </nav>
+
+      <!-- Active User Profile Display -->
+      <div class="header-right">
+        <div class="notification-trigger" id="notif-btn">
+          <svg class="icon">
+            <use href="#icon-bell" />
+          </svg>
+          <span class="badge" id="notif-badge">3</span>
+          <!-- Notif Dropdown -->
+          <div class="notif-dropdown" id="notif-menu">
+            <div class="notif-header">Notifications</div>
+            <div class="notif-list" id="notif-list">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+        <div class="profile-card">
+          <img src="https://api.dicebear.com/7.x/bottts/svg?seed=ProFlowUser" alt="Avatar" class="avatar"
+            id="user-avatar">
+          <div class="profile-info">
+            <h4 id="user-name">Adhithya</h4>
+            <p id="user-role">Team Alpha (Leader)</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Frame -->
+    <main class="app-content">
+
+      <!-- ============================================== -->
+      <!-- STUDENT VIEW -->
+      <!-- ============================================== -->
+      <section id="student-view" class="view-panel active">
+        <!-- Top Stats Row -->
+        <div class="stats-row">
+          <div class="stat-card glow-blue">
+            <div class="stat-header">
+              <span>Project Completion</span>
+              <svg class="icon text-blue">
+                <use href="#icon-chart" />
+              </svg>
+            </div>
+            <div class="stat-progress">
+              <div class="progress-ring-container">
+                <svg class="progress-ring" width="80" height="80">
+                  <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.08)" stroke-width="6"
+                    fill="transparent" r="32" cx="40" cy="40" />
+                  <circle class="progress-ring__circle" id="student-ring" stroke="var(--neon-blue)" stroke-width="6"
+                    fill="transparent" r="32" cx="40" cy="40" />
+                </svg>
+                <div class="progress-text" id="student-progress-val">65%</div>
+              </div>
+              <div class="progress-slider-box">
+                <label for="completion-slider">Adjust Progress:</label>
+                <input type="range" id="completion-slider" min="0" max="100" value="65" class="slider-input">
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card glow-green">
+            <div class="stat-header">
+              <span>Work Logs Submitted</span>
+              <svg class="icon text-green">
+                <use href="#icon-file" />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <h2 id="student-logs-count">12</h2>
+              <p class="stat-sub">Across 3 team members</p>
+            </div>
+          </div>
+
+          <div class="stat-card glow-purple">
+            <div class="stat-header">
+              <span>Guide Approval Status</span>
+              <svg class="icon text-purple">
+                <use href="#icon-check" />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <div class="status-badge" id="student-approval-badge">Pending Review</div>
+              <button class="btn btn-sm btn-purple" id="request-approval-btn" style="margin-top: 10px; width: 100%;">
+                Request Approval
+              </button>
+            </div>
+          </div>
+
+          <div class="stat-card glow-orange">
+            <div class="stat-header">
+              <span>Open Doubts</span>
+              <svg class="icon text-orange">
+                <use href="#icon-alert" />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <h2 id="student-doubts-count">1</h2>
+              <p class="stat-sub" id="student-doubts-resolved">0 Resolved</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Workspace Grid -->
+        <div class="workspace-grid">
+
+          <!-- Column 1: Daily Log & Documents -->
+          <div class="grid-col">
+
+            <!-- Work Log Logger Card -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Daily Work Logs</h3>
+                <span class="badge badge-indigo">Team Alpha</span>
+              </div>
+              <div class="card-body">
+                <!-- Log Form -->
+                <form id="log-form" class="quick-form">
+                  <div class="form-row">
+                    <select id="log-member" required>
+                      <option value="Adhithya">Adhithya</option>
+                      <option value="Balaji">Balaji</option>
+                      <option value="Chandran">Chandran</option>
+                    </select>
+                    <input type="number" id="log-hours" placeholder="Hours" min="0.5" max="24" step="0.5" required>
+                  </div>
+                  <input type="text" id="log-desc" placeholder="What did you work on today?" required>
+                  <button type="submit" class="btn btn-blue">
+                    <svg class="icon-inline">
+                      <use href="#icon-plus" />
+                    </svg> Add Log
+                  </button>
+                </form>
+
+                <!-- Scrollable Logs list -->
+                <div class="log-timeline-list" id="student-logs-list">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Files Uploader -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Project Documents</h3>
+                <svg class="icon">
+                  <use href="#icon-file" />
+                </svg>
+              </div>
+              <div class="card-body">
+                <div class="dropzone" id="dropzone">
+                  <svg class="icon-lg">
+                    <use href="#icon-file" />
+                  </svg>
+                  <p>Drag & drop project files here or <span>browse</span></p>
+                  <input type="file" id="file-input" style="display:none;">
+                </div>
+                <!-- File upload progress bar -->
+                <div class="progress-bar-container" id="upload-progress-box" style="display:none;">
+                  <div class="progress-bar-label">
+                    <span id="upload-filename">SRS_Document.pdf</span>
+                    <span id="upload-percent">0%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" id="upload-progress-fill"></div>
+                  </div>
+                </div>
+
+                <div class="file-list" id="student-file-list">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Column 2: Timeline, Doubts & Meetings -->
+          <div class="grid-col">
+
+            <!-- Timeline Display -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Milestone Timeline</h3>
+                <svg class="icon">
+                  <use href="#icon-timeline" />
+                </svg>
+              </div>
+              <div class="card-body">
+                <div class="timeline-visual" id="student-timeline">
+                  <!-- Dynamically populated steps -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Doubts Panel -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Doubt Tracker</h3>
+                <svg class="icon text-orange">
+                  <use href="#icon-alert" />
+                </svg>
+              </div>
+              <div class="card-body">
+                <form id="doubt-form" class="quick-form">
+                  <input type="text" id="doubt-title" placeholder="What is blocking you? (e.g. API Integration error)"
+                    required>
+                  <button type="submit" class="btn btn-orange">Raise Doubt</button>
+                </form>
+                <div class="doubt-list" id="student-doubt-list">
+                  <!-- Dynamically populated doubts -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Meeting & Minutes Panel -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Meeting Minutes (MoM)</h3>
+                <svg class="icon">
+                  <use href="#icon-calendar" />
+                </svg>
+              </div>
+              <div class="card-body">
+                <button class="btn btn-sm btn-indigo" id="open-mom-modal" style="width: 100%; margin-bottom: 12px;">
+                  + Log Meeting Minutes
+                </button>
+
+                <div class="meeting-list" id="student-meeting-list">
+                  <!-- Dynamically populated meeting list -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Guide Comments Feedback Area -->
+            <div class="card glass-card border-glow-pink">
+              <div class="card-header">
+                <h3>Guide Comments & Feedback</h3>
+                <svg class="icon text-pink">
+                  <use href="#icon-message" />
+                </svg>
+              </div>
+              <div class="card-body">
+                <div class="comment-thread" id="student-comments-list">
+                  <!-- Dynamically populated comments from guide -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- GUIDE VIEW -->
+      <!-- ============================================== -->
+      <section id="guide-view" class="view-panel">
+        <div class="guide-grid-layout">
+          <!-- Sidebar: Teams List -->
+          <aside class="teams-sidebar">
+            <div class="sidebar-header">
+              <h3>My Teams</h3>
+              <span class="badge" id="guide-team-count">5 Active</span>
+            </div>
+            <div class="teams-menu-list" id="guide-teams-list">
+              <!-- Dynamically populated with Team cards -->
+            </div>
+
+            <button class="btn btn-indigo" id="btn-compare-teams" style="width:100%; margin-top: 15px;">
+              <svg class="icon-inline">
+                <use href="#icon-chart" />
+              </svg> Compare All Teams
+            </button>
+          </aside>
+
+          <!-- Main Pane -->
+          <div class="guide-main-pane">
+
+            <!-- Comparison Dashboard Overlay / Section -->
+            <div id="teams-comparison-section" class="card glass-card hidden">
+              <div class="card-header">
+                <h3>Cross-Team Progress Analysis</h3>
+                <button class="btn btn-sm btn-dark" id="btn-close-comparison">Back to Single Team</button>
+              </div>
+              <div class="card-body">
+                <div class="comparison-table-wrapper">
+                  <table class="comparison-table">
+                    <thead>
+                      <tr>
+                        <th>Team Name</th>
+                        <th>Project Title</th>
+                        <th>Progress</th>
+                        <th>Active Logs</th>
+                        <th>Open Doubts</th>
+                        <th>Last Upload</th>
+                        <th>Milestones Approved</th>
+                      </tr>
+                    </thead>
+                    <tbody id="comparison-table-body">
+                      <!-- Dynamically populated -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Single Team Details View (Default) -->
+            <div id="single-team-detail-pane">
+
+              <!-- Team Detail Title Area -->
+              <div class="team-title-banner">
+                <div>
+                  <h2 id="guide-selected-team-name">Team Alpha</h2>
+                  <p id="guide-selected-team-project">IoT Based Smart Irrigation System</p>
+                </div>
+                <div class="team-banner-stats">
+                  <div class="banner-stat">
+                    <span class="label">Progress</span>
+                    <span class="val text-blue" id="guide-selected-team-prog-text">65%</span>
+                  </div>
+                  <div class="banner-stat">
+                    <span class="label">Pending files</span>
+                    <span class="val text-orange" id="guide-selected-team-files-text">1</span>
+                  </div>
+                  <div class="banner-stat">
+                    <span class="label">Milestones Done</span>
+                    <span class="val text-green" id="guide-selected-team-milestone-text">2/4</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content Row Split -->
+              <div class="workspace-grid" style="margin-top: 20px;">
+
+                <!-- Left Details Grid Column -->
+                <div class="grid-col">
+
+                  <!-- Daily Updates Timeline -->
+                  <div class="card glass-card">
+                    <div class="card-header">
+                      <h3>Daily Logs Activity</h3>
+                      <svg class="icon">
+                        <use href="#icon-timeline" />
+                      </svg>
+                    </div>
+                    <div class="card-body">
+                      <div class="log-timeline-list max-h-350" id="guide-team-logs">
+                        <!-- Dynamically populated -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Documents Pending Review -->
+                  <div class="card glass-card">
+                    <div class="card-header">
+                      <h3>Project Documents Review</h3>
+                      <svg class="icon">
+                        <use href="#icon-file" />
+                      </svg>
+                    </div>
+                    <div class="card-body">
+                      <div class="document-review-list" id="guide-team-documents">
+                        <!-- Dynamically populated docs for review -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Resolve Doubts Card -->
+                  <div class="card glass-card border-glow-orange">
+                    <div class="card-header">
+                      <h3>Resolve Team Doubts</h3>
+                      <svg class="icon text-orange">
+                        <use href="#icon-alert" />
+                      </svg>
+                    </div>
+                    <div class="card-body">
+                      <div class="doubt-list max-h-250" id="guide-team-doubts">
+                        <!-- Dynamically populated doubts -->
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Right Control Grid Column -->
+                <div class="grid-col">
+
+                  <!-- Milestones Control Panel -->
+                  <div class="card glass-card">
+                    <div class="card-header">
+                      <h3>Milestones Status & Controls</h3>
+                      <svg class="icon">
+                        <use href="#icon-check" />
+                      </svg>
+                    </div>
+                    <div class="card-body">
+                      <div class="milestone-controls" id="guide-team-milestones">
+                        <!-- Dynamic milestones checkboxes/approvals -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Schedule Review Meeting -->
+                  <div class="card glass-card">
+                    <div class="card-header">
+                      <h3>Schedule Review Meeting</h3>
+                      <svg class="icon">
+                        <use href="#icon-calendar" />
+                      </svg>
+                    </div>
+                    <div class="card-body">
+                      <form id="guide-schedule-form" class="quick-form">
+                        <div class="form-row">
+                          <input type="date" id="meet-date" required>
+                          <input type="time" id="meet-time" required>
+                        </div>
+                        <input type="text" id="meet-agenda" placeholder="Meeting Agenda / Topic" required>
+                        <button type="submit" class="btn btn-blue">Schedule Meeting</button>
+                      </form>
+                      <div class="meeting-list mt-15 max-h-200" id="guide-scheduled-meetings">
+                        <!-- Scheduled meeting lists -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Feed Comments & Actions -->
+                  <div class="card glass-card border-glow-pink">
+                    <div class="card-header">
+                      <h3>Write Feedback / Comment</h3>
+                      <svg class="icon text-pink">
+                        <use href="#icon-message" />
+                      </svg>
+                    </div>
+                    <div class="card-body">
+                      <form id="guide-comment-form" class="quick-form">
+                        <textarea id="guide-comment-input" rows="3"
+                          placeholder="Add comments, guidance, or critical inputs for the team..." required></textarea>
+                        <div class="form-actions-right">
+                          <button type="submit" class="btn btn-pink">Post Comment</button>
+                        </div>
+                      </form>
+                      <div class="comment-thread mt-15 max-h-250" id="guide-posted-comments">
+                        <!-- Feed list -->
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- HOD / COORDINATOR VIEW -->
+      <!-- ============================================== -->
+      <section id="hod-view" class="view-panel">
+
+        <!-- Key Metrics Cards -->
+        <div class="stats-row">
+          <div class="stat-card glow-cyan">
+            <div class="stat-header">
+              <span>Active Department Teams</span>
+              <svg class="icon text-cyan">
+                <use href="#icon-users" />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <h2 id="hod-active-teams">15</h2>
+              <p class="stat-sub">Across AI & DS, CSE (AIML), and M.Tech AI</p>
+            </div>
+          </div>
+
+          <div class="stat-card glow-red">
+            <div class="stat-header">
+              <span>Teams Behind Schedule</span>
+              <svg class="icon text-red">
+                <use href="#icon-alert" />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <h2 id="hod-delayed-teams" class="text-red">2</h2>
+              <p class="stat-sub">Failed to meet milestones</p>
+            </div>
+          </div>
+
+          <div class="stat-card glow-green">
+            <div class="stat-header">
+              <span>Avg Completion Rate</span>
+              <svg class="icon text-green">
+                <use href="#icon-chart" />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <h2 id="hod-avg-progress">68.4%</h2>
+              <p class="stat-sub">Targeting 100% by August</p>
+            </div>
+          </div>
+
+          <div class="stat-card glow-indigo">
+            <div class="stat-header">
+              <span>Upcoming Reviews</span>
+              <svg class="icon text-indigo">
+                <use href="#icon-calendar" />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <h2 id="hod-upcoming-reviews">4</h2>
+              <p class="stat-sub">Scheduled for this week</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOD Analytics Grid -->
+        <div class="workspace-grid">
+
+          <!-- Column 1: Analytics & charts -->
+          <div class="grid-col">
+
+            <!-- Progress by Department -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Completion Progress by Department</h3>
+                <svg class="icon">
+                  <use href="#icon-chart" />
+                </svg>
+              </div>
+              <div class="card-body">
+                <!-- SVG-based Department Chart -->
+                <div class="department-chart-container">
+                  <div class="dept-bar-row">
+                    <span class="dept-label">B.E CSE (AIML)</span>
+                    <div class="dept-bar-wrapper">
+                      <div class="dept-bar fill-cse" style="width: 78%;"></div>
+                    </div>
+                    <span class="dept-val">78%</span>
+                  </div>
+                  <div class="dept-bar-row">
+                    <span class="dept-label">B.E. CSE</span>
+                    <div class="dept-bar-wrapper">
+                      <div class="dept-bar fill-it" style="width: 65%;"></div>
+                    </div>
+                    <span class="dept-val">65%</span>
+                  </div>
+                  <div class="dept-bar-row">
+                    <span class="dept-label">B.Tech IT</span>
+                    <div class="dept-bar-wrapper">
+                      <div class="dept-bar fill-ece" style="width: 58%;"></div>
+                    </div>
+                    <span class="dept-val">58%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guide-wise Team Progress Summary -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Guide-wise Supervisor Performance</h3>
+                <svg class="icon">
+                  <use href="#icon-users" />
+                </svg>
+              </div>
+              <div class="card-body">
+                <div class="comparison-table-wrapper">
+                  <table class="comparison-table">
+                    <thead>
+                      <tr>
+                        <th>Guide Name</th>
+                        <th>Supervised Teams</th>
+                        <th>Avg Progress</th>
+                        <th>Milestones Approved</th>
+                        <th>Rating / Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="hod-guides-tbody">
+                      <!-- Dynamic list of guides -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Column 2: Delayed teams & Live Feed -->
+          <div class="grid-col">
+
+            <!-- Delayed teams Detail -->
+            <div class="card glass-card border-glow-red">
+              <div class="card-header">
+                <h3>Attention Needed: Delayed Teams</h3>
+                <svg class="icon text-red">
+                  <use href="#icon-alert" />
+                </svg>
+              </div>
+              <div class="card-body">
+                <div class="delayed-team-list" id="hod-delayed-teams-list">
+                  <!-- Dynamically populated delayed teams -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Department Feed -->
+            <div class="card glass-card">
+              <div class="card-header">
+                <h3>Department Activity Stream</h3>
+                <span class="badge badge-emerald">Live Updates</span>
+              </div>
+              <div class="card-body">
+                <div class="log-timeline-list max-h-350" id="hod-activity-feed">
+                  <!-- Dynamically populated logs from all teams -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- MEETING MINUTES MODAL (MOM) -->
+  <div class="modal" id="mom-modal">
+    <div class="modal-content glass-card">
+      <div class="modal-header">
+        <h3>Create Meeting Minutes (MoM)</h3>
+        <button class="modal-close-btn" id="close-mom-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="mom-form">
+          <div class="form-group">
+            <label for="mom-title">Meeting Title</label>
+            <input type="text" id="mom-title" placeholder="e.g. Weekly Status Review with Guide" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mom-date">Meeting Date</label>
+              <input type="date" id="mom-date" required>
+            </div>
+            <div class="form-group">
+              <label for="mom-attendees">Attendees</label>
+              <input type="text" id="mom-attendees" placeholder="e.g. Adhithya, Balaji, Chandran, Dr. Abirami" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mom-minutes">Minutes of Meeting (Key Discussion & Action Items)</label>
+            <textarea id="mom-minutes" rows="5" placeholder="- Discussed SRS alterations
+- Allocated Frontend tasks to Balaji and backend to Chandran
+- Adhithya to coordinate with Guide for approval" required></textarea>
+          </div>
+          <div class="form-actions-right">
+            <button type="button" class="btn btn-dark" id="btn-cancel-mom">Cancel</button>
+            <button type="submit" class="btn btn-indigo">Save & Publish MoM</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
